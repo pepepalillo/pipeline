@@ -15,9 +15,13 @@ node {
     }
     stage ( 'Deploying') {
         /* echo 'Dploying ...'*/
-        withMaven( maven:'Mavent TEST' ) {
-             sh 'mvn package'
-           deleteDir() 
+        try {
+            withMaven( maven:'Mavent TEST' ) {
+                sh 'mvn package'
+            }
+        }
+        finally {
+            deleteDir() 
         }
         /* sh 'rm -rf ${WORKSPACE}' */
     }
