@@ -49,6 +49,7 @@ node {
         /* echo 'Dploying ...'*/
         withMaven( maven:'Mavent TEST' ) {
              sh 'mvn package'
+            sh 'echo rm -f $WORKSPACE'
         }
     }
 }
