@@ -34,19 +34,19 @@ pipeline {
 node {
     checkout scm
     stage ( 'Buid') {
-        echo 'Build ...'
+        /* echo 'Build ...' */
         withMaven( maven:'Mavent TEST' ) {
              sh 'mvn compile'
         }
     }
     stage ( 'Test') {
-        echo 'Test ...'
+        /* echo 'Test ...'*/
         withMaven( maven:'Mavent TEST' ) {
              sh 'mvn test'
         }
     }
     stage ( 'Deploying') {
-        echo 'Dploying ...'
+        /* echo 'Dploying ...'*/
         withMaven( maven:'Mavent TEST' ) {
              sh 'mvn package'
         }
