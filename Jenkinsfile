@@ -35,14 +35,20 @@ node {
     checkout scm
     stage ( 'Buid') {
         echo 'Build ...'
-        sh 'mvn compile'
+        withMaven( maven:'Mavent TEST' ) {
+             sh 'mvn compile'
+        }
     }
     stage ( 'Test') {
         echo 'Test ...'
-        sh 'mvn test'
+        withMaven( maven:'Mavent TEST' ) {
+             sh 'mvn test'
+        }
     }
     stage ( 'Deploying') {
         echo 'Dploying ...'
-        sh 'mvn package'
+        withMaven( maven:'Mavent TEST' ) {
+             sh 'mvn package'
+        }
     }
 }
