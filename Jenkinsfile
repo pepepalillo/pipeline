@@ -43,5 +43,6 @@ node {
     }
     stage ( 'Deploying') {
         echo 'Dploying ...'
+        sh 'mvn package'
     }
 }
