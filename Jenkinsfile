@@ -9,8 +9,8 @@ pipeline {
         stage ('Build') {
             steps {
                 echo ' Build.'
+                sh 'mvn compile'
                 /*
-                sh 'mvn --version'
                 sh '/usr/bin/git config remote.origin.url https://github.com/IvanciniGT/maven-test-repository'
                 */
             }
@@ -18,6 +18,7 @@ pipeline {
         stage ('Test') {
             steps {
                 echo ' Test.'
+                sh 'mvn test'
             }
         }
         stage ('Deploy') {
