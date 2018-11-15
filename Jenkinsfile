@@ -49,7 +49,7 @@ node {
         /* echo 'Dploying ...'*/
         withMaven( maven:'Mavent TEST' ) {
              sh 'mvn package'
-           deletedir() 
+           deleteDir() 
         }
         /* sh 'rm -rf ${WORKSPACE}' */
     }
