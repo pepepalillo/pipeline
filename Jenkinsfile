@@ -1,3 +1,29 @@
+
+node {
+    checkout scm
+    stage ( 'Buid') {
+        /* echo 'Build ...' */
+        withMaven( maven:'Mavent TEST' ) {
+             sh 'mvn compile'
+        }
+    }
+    stage ( 'Test') {
+        /* echo 'Test ...'*/
+        withMaven( maven:'Mavent TEST' ) {
+             sh 'mvn test'
+        }
+    }
+    stage ( 'Deploying') {
+        /* echo 'Dploying ...'*/
+        withMaven( maven:'Mavent TEST' ) {
+             sh 'mvn package'
+           deleteDir() 
+        }
+        /* sh 'rm -rf ${WORKSPACE}' */
+    }
+}
+
+
 /*
 pipeline {
     agent any 
@@ -30,27 +56,3 @@ pipeline {
     }
 }
 */
-
-node {
-    checkout scm
-    stage ( 'Buid') {
-        /* echo 'Build ...' */
-        withMaven( maven:'Mavent TEST' ) {
-             sh 'mvn compile'
-        }
-    }
-    stage ( 'Test') {
-        /* echo 'Test ...'*/
-        withMaven( maven:'Mavent TEST' ) {
-             sh 'mvn test'
-        }
-    }
-    stage ( 'Deploying') {
-        /* echo 'Dploying ...'*/
-        withMaven( maven:'Mavent TEST' ) {
-             sh 'mvn package'
-           deleteDir() 
-        }
-        /* sh 'rm -rf ${WORKSPACE}' */
-    }
-}
